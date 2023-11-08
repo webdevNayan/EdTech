@@ -1,0 +1,61 @@
+.dashboard {
+
+    height: 100vh;
+
+    display: flex;
+  
+    &.collapsed {
+      .sidenav {
+        width: 2rem; // Adjust this value to the desired collapsed width
+        overflow: hidden;
+  
+        a {
+          span {
+            display: none;
+          }
+  
+          svg {
+            margin: 0 auto;
+            display: block;
+            font-size: 20px;
+          }
+        }
+      }
+  
+      .content {
+        padding-left: 60px; // Set padding to the width of the collapsed sidenav
+      }
+    }
+  
+    .sidenav {
+      background: #f0f0f0;
+      transition: width 0.3s; // Add transition for smooth width change
+  
+      a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        display: flex;
+        align-items: center;
+  
+        svg {
+          margin-right: 10px;
+        }
+      }
+  
+      button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
+  
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+  }
+  

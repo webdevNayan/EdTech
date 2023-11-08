@@ -1,0 +1,43 @@
+.card_background {
+    width: 21rem;
+    padding: 0.9rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #fff;
+    background: #f7f7f7;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+
+}
+
+.carousel {
+    img {
+        height: 13rem;
+    }
+}
+
+.dotted_button {
+    padding: 0.5rem 1rem;
+    margin: 0rem 1rem 0rem 0rem;
+
+    outline: none;
+    border-radius: 1rem;
+
+    border: 2px solid #87ceeb;
+    border-style: dashed;
+}
+
+.small_img {
+    height: 2rem;
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+
+
+.like_btn {
+    width: auto;
+    height: 3.5rem;
+
+    margin-right: 0.5rem;
+}

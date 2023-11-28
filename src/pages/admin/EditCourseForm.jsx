@@ -14,9 +14,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import Skeleton from 'react-loading-skeleton';
 
-import edit_course_css from  './EditCourseForm.module.scss'; // Import the SCSS file
+import edit_course_css from  './EditCourseForm.module.scss'; 
 
 import SideNav from '../../components/admin/SideNav';
+
 import Buffering from '../../components/buffering';
 
 const Swal = require('sweetalert2')

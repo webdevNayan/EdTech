@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// SignUP
 export const signUpUser = createAsyncThunk('user/signUp', async (userData) => {
   const response = await fetch('https://654a508ce182221f8d52f4e5.mockapi.io/user', {
     method: 'POST',
@@ -17,6 +18,7 @@ export const signUpUser = createAsyncThunk('user/signUp', async (userData) => {
   }
 });
 
+// SignIn
 export const signInUser = createAsyncThunk('user/signIn', async (credentials) => {
   const response = await fetch('https://654a508ce182221f8d52f4e5.mockapi.io/user', {
     method: 'GET',
@@ -39,37 +41,40 @@ export const signInUser = createAsyncThunk('user/signIn', async (credentials) =>
   }
 });
 
+// Sign Out
 export const signOutUser = createAsyncThunk('user/signOut', async () => {
   return null;
 });
 
+// Enroll Course
 export const enrollCourse = createAsyncThunk('user/enrollCourse', async (courseName, { getState }) => {
-    const { userReducer } = getState();
-    const { currentUser } = userReducer;
-  
-    if (currentUser) {
-      const updatedUser = { ...currentUser };
-      const updatedCourses = [...updatedUser.course, courseName]; // Appending the new course name
-      updatedUser.course = updatedCourses;
-  
-      const response = await fetch(`https://654a508ce182221f8d52f4e5.mockapi.io/user/${updatedUser.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedUser),
-      });
-  
-      if (response.ok) {
-        return updatedUser;
-      } else {
-        throw new Error('Failed to enroll in the course');
-      }
+  const { userReducer } = getState();
+  const { currentUser } = userReducer;
+
+  if (currentUser) {
+    const updatedUser = { ...currentUser };
+    const updatedCourses = [...updatedUser.course, courseName]; // Appending the new course name
+    updatedUser.course = updatedCourses;
+
+    const response = await fetch(`https://654a508ce182221f8d52f4e5.mockapi.io/user/${updatedUser.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedUser),
+    });
+
+    if (response.ok) {
+      return updatedUser;
     } else {
-      throw new Error('User is not signed in');
+      throw new Error('Failed to enroll in the course');
     }
+  } else {
+    throw new Error('User is not signed in');
+  }
 });
 
+// Get All User
 export const getAllUsers = createAsyncThunk('getAllUsers', async () => {
   const response = await fetch('https://654a508ce182221f8d52f4e5.mockapi.io/user');
   if (response.ok) {
@@ -89,7 +94,11 @@ const userSlice = createSlice({
     currentUser: null,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setCurrentUser(state, action) {
+      state.currentUser = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(signUpUser.pending, (state) => {
@@ -133,15 +142,17 @@ const userSlice = createSlice({
       })
       .addCase(getAllUsers.fulfilled, (state, action) => {
         state.status = 'succeeded';
-         state.allUsers = action.payload;
+        state.allUsers = action.payload;
       })
       .addCase(getAllUsers.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
-      });      
+      })
+
+    
+
   },
 });
 
-
-
+export const { setCurrentUser } = userSlice.actions;
 export default userSlice.reducer;

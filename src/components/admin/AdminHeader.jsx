@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { signOutUser } from '../../redux/userSlice';
-import "./Header.module.scss"
+import "./AdminHeader.module.scss"
 
 import Swal from 'sweetalert2';
 
-const Header = () => {
+const AdminHeader = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Hook for navigation
 
@@ -20,22 +20,19 @@ const Header = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect className="justify-content-between">
       <Container>
-        <Link to="/course_listing">
+        <Link to="/admin">
           <Navbar.Brand><b> EDTECH</b></Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/course_listing">
+            <Nav.Link as={Link} to="/admin">
              <span> Home </span> 
             </Nav.Link>
-            <Nav.Link as={Link} to="/user_dashboard">
-              <span> Dashboard </span>
-             
+            <Nav.Link as={Link} to="/">
+             <span> <small> User </small></span>
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin_auth">
-              <small className='text-secondary'>Admin </small>
-            </Nav.Link>
+           
             {/* Add more Nav.Link for additional routes */}
           </Nav>
         </Navbar.Collapse>
@@ -45,4 +42,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AdminHeader;

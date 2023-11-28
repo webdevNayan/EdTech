@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import CourseListing from './pages/CourseListing';
+import CourseListing from './pages/user/CourseListing';
 
 import AdminDashboard from './pages/admin/AdminDashboard';
 
@@ -15,9 +15,14 @@ import EditCourseForm from './pages/admin/EditCourseForm';
 import SingnIn from './pages/user/SignIn';
 
 import SingnUp from './pages/user/SingnUp';
+
 import RegisteredStudents from './pages/admin/RegisteredStudents';
-import Dashboard from './components/user/Dashboard';
+
+import Dashboard from './pages/user/Dashboard';
+
 import AdminAuth from './components/admin/AdminAuth';
+
+import CourseDetailsPage from './pages/user/CourseDetailsPage';
 
 
 export default function App() {
@@ -36,6 +41,7 @@ export default function App() {
           <Route path="/edit_courses/:id" Component={EditCourseForm} />
           <Route path="/registered_students" Component={RegisteredStudents} />
           <Route path="/user_dashboard" Component={Dashboard} />
+          <Route path="/course_details/:id" Component={CourseDetailsPage} />
         </Routes>
       </BrowserRouter>      
     </>

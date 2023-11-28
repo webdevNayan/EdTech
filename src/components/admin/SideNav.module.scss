@@ -28,14 +28,14 @@
     }
   
     .sidenav {
-      background: #f0f0f0;
+      background: #212529;
       transition: width 0.3s; // Add transition for smooth width change
   
       a {
         display: block;
         padding: 10px;
         text-decoration: none;
-        color: #333;
+        color: #d7cdcd !important;
         display: flex;
         align-items: center;
   
@@ -47,8 +47,11 @@
       button {
         width: 40px;
         height: 40px;
-        border: none;
+        padding: 0;
+        margin: 1rem;
+        border: 1px solid #dc3545;
         background-color: transparent;
+        color: #d7cdcd;
         cursor: pointer;
       }
     }

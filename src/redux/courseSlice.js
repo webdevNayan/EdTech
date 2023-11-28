@@ -242,7 +242,7 @@ const coourseSlice= createSlice({
         });
         builder.addCase(likeCourse.rejected, (state, action) => {
           state.loading = false;
-          state.error = action.payload; // Verify if action.payload contains a 'message' property
+          state.error = action.payload; // if action.payload contains a 'message' property
         });
         
 
